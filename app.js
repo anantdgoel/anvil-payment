@@ -44,8 +44,8 @@ app.use(function(err, req, res, next) {
 });
 
 //Run app on port 5000 to debug --- Remove in production
-app.listen(5000, function () {
-  console.log('Anvil Web App listening on port 5000!')
+app.listen(process.env.PORT, function () {
+  console.log('Anvil Web App listening on port'+process.env.PORT)
 })
 
 module.exports = app;
