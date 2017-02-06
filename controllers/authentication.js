@@ -6,6 +6,7 @@ module.exports.register = function(req, res) {
   var user = new User();
 
   user.name = req.body.name;
+  user.nameLast = req.body.nameLast;
   user.email = req.body.email;
 
   user.setPassword(req.body.password);
