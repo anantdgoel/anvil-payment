@@ -85,4 +85,6 @@ app.use(function(err, req, res, next) {
 });
 
 
-module.exports = app;
+app.listen(process.env.PORT, function () {
+  console.log('Anvil app listening on port '+process.env.PORT+'!')
+})
