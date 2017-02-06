@@ -1,0 +1,25 @@
+{
+  "name": "payments-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anantdgoel/anvil-payment.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anantdgoel/anvil-payment/issues"
+  },
+  "homepage": "https://github.com/anantdgoel/anvil-payment#readme",
+  "dependencies": {
+    "express-jwt": "^5.1.0",
+    "jsonwebtoken": "^7.2.1",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
+  }
+}
