@@ -1,10 +1,7 @@
 var mongoose = require('mongoose');
 var gracefulShutdown;
-var dbURI = 'mongodb://localhost/anvil';
+var dbURI = process.env.MONGODB_URI;
 
-if (process.env.NODE_ENV === 'production') {
-  dbURI = process.env.MONGOLAB_URI;
-}
 
 mongoose.connect(dbURI);
 
