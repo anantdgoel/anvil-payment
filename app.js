@@ -89,6 +89,6 @@ app.use(function(err, req, res, next) {
 });
 
 
-app.listen(5000, function () {
-  console.log('Anvil app listening on port 5000!')
+app.listen(process.env.PORT, function () {
+  console.log('Anvil app listening on port '+process.env.PORT+'!')
 })
