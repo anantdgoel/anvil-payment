@@ -16,6 +16,8 @@ var userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  verified: {type: Boolean, default: false},
+  payment_method: String,
   hash: String,
   salt: String
 });
@@ -39,7 +41,7 @@ userSchema.methods.generateJwt = function() {
     email: this.email,
     name: this.name,
     exp: parseInt(expiry.getTime() / 1000),
-  }, 'nosecret');
+  }, process.env.JWT_SECRET);
 };
 
 var User = mongoose.model('User', userSchema);

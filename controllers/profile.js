@@ -13,6 +13,10 @@ module.exports.profileRead = function(req, res) {
     User
       .findById(req.payload._id)
       .exec(function(err, user) {
+        user = user.toObject();
+        // Keep salt and hash only on server side
+        delete user['salt'];
+        delete user['hash'];
         res.status(200).json(user);
       });
   }

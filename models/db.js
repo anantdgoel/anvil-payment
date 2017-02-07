@@ -1,8 +1,6 @@
 var mongoose = require('mongoose');
 var gracefulShutdown;
-// var dbURI = process.env.MONGODB_URI;
-
-var dbURI = 'mongodb://localhost/anvil';
+var dbURI = process.env.MONGODB_URI;
 
 mongoose.Promise = global.Promise;
 
