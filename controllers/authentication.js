@@ -4,7 +4,7 @@ var User = mongoose.model('User');
 
 module.exports.register = function(req, res) {
   var user = new User();
-
+  
   user.name = req.body.name;
   user.nameLast = req.body.nameLast;
   user.email = req.body.email;

@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 // [SH] Require Passport
 var passport = require('passport');
+var cors = require('cors');
 
 // [SH] Bring in the data model
 require('./models/db');
@@ -34,6 +35,9 @@ app.use(express.static(path.join(__dirname, 'app_client')));
 
 // [SH] Initialise Passport before using the route middleware
 app.use(passport.initialize());
+
+app.use(cors())
+app.use(bodyParser.urlencoded({extended: false}))
 
 // [SH] Use the API routes when path starts with /api
 app.use('/api', routesApi);
@@ -85,6 +89,6 @@ app.use(function(err, req, res, next) {
 });
 
 
-app.listen(process.env.PORT, function () {
-  console.log('Anvil app listening on port '+process.env.PORT+'!')
+app.listen(5000, function () {
+  console.log('Anvil app listening on port 5000!')
 })
