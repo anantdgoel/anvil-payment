@@ -19,6 +19,7 @@ module.exports.payCard = function(req, res) {
         if(!user.stripe_cus_id){
           var customer = stripe.customers.create({
             email: "jenny.rosen@example.com",
+            source: res.body.stripe_token,
           }, function(err, customer) {
             if(err){
               res.status(401).json({"message" : "Error creating customer"})
