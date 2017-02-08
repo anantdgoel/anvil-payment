@@ -9,9 +9,14 @@ var auth = jwt({
 
 var ctrlProfile = require('../controllers/profile');
 var ctrlAuth = require('../controllers/authentication');
+var ctrlPay = require('../controllers/payment');
+
+//payment
+router.post('/pay', auth, ctrlPay.payCard);
 
 // profile
 router.get('/profile', auth, ctrlProfile.profileRead);
+router.post('/verify', auth, ctrlProfile.profileVerify);
 
 // authentication
 router.post('/register', ctrlAuth.register);

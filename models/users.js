@@ -17,9 +17,10 @@ var userSchema = new mongoose.Schema({
     required: true
   },
   verified: {type: Boolean, default: false},
-  payment_method: String,
   hash: String,
-  salt: String
+  salt: String,
+  stripe_sub_id: String,
+  stripe_cus_id: String
 });
 
 userSchema.methods.setPassword = function(password){
