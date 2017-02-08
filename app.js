@@ -36,7 +36,7 @@ app.use(express.static(path.join(__dirname, 'app_client')));
 // [SH] Initialise Passport before using the route middleware
 app.use(passport.initialize());
 
-app.use(cors())
+app.use(cors({credentials: true, origin: 'localhost:8000';}))
 app.use(bodyParser.urlencoded({extended: false}))
 
 // [SH] Use the API routes when path starts with /api
