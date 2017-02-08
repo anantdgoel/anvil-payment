@@ -36,7 +36,7 @@ module.exports.payCard = function(req, res) {
         if(err)
           res.status(401).json({"message" : "Payment error"})
         user.stripe_sub_id = subscription.id
-        res.status(200).json("message" : "Payment sucess")
+        res.status(200).json({"message" : "Payment sucess"})
       });
         res.status(200).json();
       });
