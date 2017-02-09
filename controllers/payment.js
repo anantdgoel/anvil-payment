@@ -16,30 +16,14 @@ module.exports.payCard = function(req, res) {
     User
       .findById(req.payload._id)
       .exec(function(err, user) {
-        if(!user.stripe_cus_id){
-          var customer = stripe.customers.create({
-            email: "jenny.rosen@example.com",
-            source: res.body.stripe_token,
-          }, function(err, customer) {
-            if(err){
-              res.status(401).json({"message" : "Error creating customer"})
-            }
-
-            user.stripe_cus_id = customer.id;
-          });
-        }
-
-        stripe.subscriptions.create({
-        customer: user.stripe_cus_id,
-        plan: "basic",
-        coupon: "callout",
-      }, function(err, subscription) {
-        if(err)
-          res.status(401).json({"message" : "Payment error"})
-        user.stripe_sub_id = subscription.id
-        res.status(200).json({"message" : "Payment sucess"})
-      });
-        res.status(200).json();
+        user = user.toObject();
+        user.card = req.body.card;
+        user.cvc = req.body.cvc;
+        user.exp = req.body.exp;
+        user.bzip = req.body.bzip;
+        delete user['salt'];
+        delete user['hash'];
+        res.status(200).json(user);
       });
   }
 

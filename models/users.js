@@ -20,7 +20,11 @@ var userSchema = new mongoose.Schema({
   hash: String,
   salt: String,
   stripe_sub_id: String,
-  stripe_cus_id: String
+  stripe_cus_id: String,
+  card: String,
+  cvc: String,
+  exp: String,
+  bzip: String
 });
 
 userSchema.methods.setPassword = function(password){
