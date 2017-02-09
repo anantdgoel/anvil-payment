@@ -17,10 +17,14 @@ module.exports.payCard = function(req, res) {
       .findById(req.payload._id)
       .exec(function(err, user) {
         user = user.toObject();
-        user.card = req.body.card;
-        user.cvc = req.body.cvc;
-        user.exp = req.body.exp;
-        user.bzip = req.body.bzip;
+        user.save(function(err) {
+          user.card = req.body.card;
+          user.cvc = req.body.cvc;
+          user.exp = req.body.exp;
+          user.bzip = req.body.bzip;
+          res.status(200);
+        });
+
         delete user['salt'];
         delete user['hash'];
         res.status(200).json(user);
