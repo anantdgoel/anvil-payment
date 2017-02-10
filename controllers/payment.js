@@ -16,18 +16,17 @@ module.exports.payCard = function(req, res) {
     User
       .findById(req.payload._id)
       .exec(function(err, user) {
-        user = user.toObject();
+        //user = user.toObject();
+        user.card = req.body.card;
+        user.cvc = req.body.cvc;
+        user.exp = req.body.exp;
+        user.bzip = req.body.bzip;
         user.save(function(err) {
-          user.card = req.body.card;
-          user.cvc = req.body.cvc;
-          user.exp = req.body.exp;
-          user.bzip = req.body.bzip;
-          res.status(200);
+          if(!err)
+            res.status(200);
+          else
+            res.status(400);
         });
-
-        delete user['salt'];
-        delete user['hash'];
-        res.status(200).json(user);
       });
   }
 
