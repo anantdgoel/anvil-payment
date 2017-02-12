@@ -17,16 +17,12 @@ module.exports.payCard = function(req, res) {
       .findById(req.payload._id)
       .exec(function(err, user) {
         //user = user.toObject();
-        user.card = req.body.card;
-        user.cvc = req.body.cvc;
-        user.exp = req.body.exp;
-        user.bzip = req.body.bzip;
+        user.stripe_token = req.body.stripe_token;
         user.save(function(err) {
-          if(!err)
-            res.status(200);
-          else
-            res.status(400);
+          if(err)
+            res.status(400).json('{Error: Payment error}');
         });
+        res.status(200).json(user)
       });
   }
 
