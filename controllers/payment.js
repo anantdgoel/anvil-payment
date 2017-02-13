@@ -22,18 +22,13 @@ module.exports.payCard = function(req, res) {
           "sk_test_DbjvWl9HFaIuuIcF9QMz6RMJ"
         );
 
-        var customer = new Promise(stripe.customers.create({
+        stripe.customers.create({
           email: user.email,
           source: user.stripe_token // obtained with Stripe.js
-        }));
-
-        // stripe.subscriptions.create({
-        //   customer: customer.id,
-        //   plan: "basic",
-        // }, function(err, subscription) {
-        //   if(err)
-        //     res.status(400).json('{Error: Stripe could not subscribe customer}')
-        // });
+        }, function(err, customer) {
+            if(err)
+              res.status(400).json('{Error: Stripe could not create customer}')
+        });
 
         user.save(function(err) {
           if(err)
