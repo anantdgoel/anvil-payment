@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var stripe = require("stripe")(
-  "sk_test_DbjvWl9HFaIuuIcF9QMz6RMJ"
+  "sk_live_ruhuXiutSmiFsIxOea3JCKfX"
 );
 
 module.exports.payCard = function(req, res) {
