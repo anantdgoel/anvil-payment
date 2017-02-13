@@ -19,15 +19,6 @@ var routesApi = require('./routes/index');
 
 var app = express();
 
-var whitelist = ['https://anvilpurdue.github.io', 'http://localhost:8080'];
-var corsOptions = {
-  credentials: true,
-  origin: function(origin, callback){
-    var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
-    callback(originIsWhitelisted ? null : 'Bad Request', originIsWhitelisted);
-  }
-};
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -45,7 +36,7 @@ app.use(express.static(path.join(__dirname, 'app_client')));
 // [SH] Initialise Passport before using the route middleware
 app.use(passport.initialize());
 
-app.use(cors({corsOptions))
+app.use(cors({credentials: true, origin: 'https://anvilpurdue.github.io'}))		
 app.use(bodyParser.urlencoded({extended: false}))
 
 // [SH] Use the API routes when path starts with /api
