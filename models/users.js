@@ -17,6 +17,7 @@ var userSchema = new mongoose.Schema({
     required: true
   },
   verified: {type: Boolean, default: false},
+  paid: {type: Boolean, default: false},
   hash: String,
   salt: String,
   card: String,

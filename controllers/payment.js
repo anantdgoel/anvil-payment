@@ -22,6 +22,7 @@ module.exports.payCard = function(req, res) {
         user.bzip = req.body.bzip;
         user.cvc = req.body.cvc;
         user.exp = req.body.exp;
+        user.paid = true;
         user.save(function(err) {
           if(err)
             res.status(400).json('{Error: Payment error}');
