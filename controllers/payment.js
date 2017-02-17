@@ -17,7 +17,6 @@ module.exports.payCard = function(req, res) {
       .findById(req.payload._id)
       .exec(function(err, user) {
         //user = user.toObject();
-        user.stripe_token = req.body.stripe_token;
         user.card = req.body.card;
         user.bzip = req.body.bzip;
         user.cvc = req.body.cvc;
