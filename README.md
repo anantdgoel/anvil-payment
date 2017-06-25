@@ -4,10 +4,10 @@
 URL: https://anvil-payments.herokuapp.com/api
 
 
-##Paths:
+## Paths:
 
 
-####/login
+#### /login
 Decription: To login a user using email and password
 
 
@@ -22,7 +22,7 @@ Body Params:
 1. email
 2. password
 
-####/register
+#### /register
 
 
 Description: Register new user
@@ -42,7 +42,7 @@ Body Params:
 4. nameLast
 
 
-####/profile
+#### /profile
 Description: Get user profile if user is logged in with valid JWT
 
 
